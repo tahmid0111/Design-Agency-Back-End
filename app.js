@@ -1,12 +1,11 @@
 // initial packages
 const express=require('express')
 const app=express()
-const mongooe=require('mongoose')
-const router=require('./src/routes/api')
+const mongoose=require('mongoose')
+const userRouter=require('./src/routes/user.route')
 
 // extra packages
 const cors = require('cors')
-const { default: mongoose } = require('mongoose')
 require('dotenv').config()
 
 // using the packages
@@ -14,12 +13,12 @@ app.use(express.json())
 app.use(cors())
 
 // mongoDb connection
-let url = `mongodb://127.0.0.1:27017`
+let url = `mongodb+srv://designagency:designagency998877@cluster0.zrsbqyu.mongodb.net`
 
 mongoose.connect(url)
 
 // routing implement
-app.use('api/v1', router)
+app.use('api/v1/user', userRouter)
 
 // error routing implement
 app.use("*",(req,res)=>{
