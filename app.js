@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(cors())
 
 // mongoDb connection
-let url = `mongodb+srv://designagency:designagency998877@cluster0.zrsbqyu.mongodb.net`
+let url = process.env.DATABASE
 
 mongoose.connect(url)
 
