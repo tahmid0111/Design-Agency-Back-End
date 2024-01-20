@@ -1,0 +1,62 @@
+[
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28462"
+    },
+    "Name": "John Doe",
+    "Image": "https://images.unsplash.com/photo-1500048993953-d23a436266cf?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "Founder and CEO",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "John is a valuable team member. His coding skills are excellent."
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28463"
+    },
+    "Name": "Alice Smith",
+    "Image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "Data Scientist",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "Alice is a data wizard! Her analytical skills are top-notch."
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28464"
+    },
+    "Name": "Bob Johnson",
+    "Image": "https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "Software Developer",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "Bob is a coding maestro! His solutions are always efficient."
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28465"
+    },
+    "Name": "Eva Rodriguez",
+    "Image": "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "UX/UI Designer",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "Eva's designs are simply stunning! She transforms ideas into visuals seamlessly."
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28466"
+    },
+    "Name": "Charlie Brown",
+    "Image": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "Marketing Specialist",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "Charlie's marketing strategies have significantly boosted our online presence."
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28467"
+    },
+    "Name": "Grace Lee",
+    "Image": "https://images.unsplash.com/photo-1573497019236-17f8177b81e8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "Position": "Project Manager",
+    "About": "Organized project manager with a proven track record of successful deliveries. Skilled in coordinating cross-functional teams, managing budgets, and ensuring project timelines are met. Adept at problem-solving and communication.",
+    "Review": "Grace ensures projects run smoothly from inception to completion."
+  }
+]

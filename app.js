@@ -2,7 +2,9 @@
 const express=require('express')
 const app=express()
 const mongoose=require('mongoose')
+
 const userRouter=require('./src/routes/user.route')
+const router = require('./src/routes/api')
 
 // extra packages
 const cors = require('cors')
@@ -19,6 +21,7 @@ mongoose.connect(url)
 
 // routing implement
 app.use('api/v1/user', userRouter)
+app.use('api/v1', router)
 
 // error routing implement
 app.use("*",(req,res)=>{
