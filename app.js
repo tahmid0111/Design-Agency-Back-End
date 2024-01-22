@@ -20,8 +20,8 @@ let url = process.env.DATABASE
 mongoose.connect(url)
 
 // routing implement
-app.use('api/v1/user', userRouter)
-app.use('api/v1', router)
+app.use('/api/v1/user', userRouter)
+app.use('/api/v1', router)
 
 // error routing implement
 app.use("*",(req,res)=>{
