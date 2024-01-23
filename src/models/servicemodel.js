@@ -11,25 +11,21 @@ const DataSchema = mongoose.Schema(
     ImageOne: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     ImageTwo: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     ImageThree: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     ImageFour: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     SubTitle: {
