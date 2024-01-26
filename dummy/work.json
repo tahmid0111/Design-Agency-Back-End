@@ -1,0 +1,32 @@
+[
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28422"
+    },
+    "Title": "Grow Your Business",
+    "Image": "/public/work/Work1.png",
+    "SubTitle": "We help identify the best ways to improve your business",
+    "Number": "240452",
+    "Expression": "Happy Customers"
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28423"
+    },
+    "Title": "Improve brand loyalty",
+    "Image": "/public/work/Work2.png",
+    "SubTitle": "We help identify the best ways to improve your business",
+    "Number": "6300",
+    "Expression": "Followers"
+  },
+  {
+    "_id": {
+      "$oid": "5fe9b4777a5791268cc28424"
+    },
+    "Title": "Improve Business Model",
+    "Image": "/public/work/Work3.png",
+    "SubTitle": "We help identify the best ways to improve your business",
+    "Number": "25000",
+    "Expression": "Problems"
+  }
+]

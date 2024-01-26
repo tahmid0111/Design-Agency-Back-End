@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "text": {
+      "Title": "",
+      "SubTitle": ""
+    },
+    "img": [
+      {
+        "Image": ""
+      },
+      { "Image": "" 
+      }
+    ]
+  },
+  "partner": [
+    {
+      "Image": ""
+    },
+    { 
+     "Image": ""
+    }
+  ]
+}
