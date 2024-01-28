@@ -1,22 +1,31 @@
-const mongoose=require('mongoose')
+// initial packages
+const mongoose = require("mongoose");
 
-const DataSchema = mongoose.Schema({
-    UserName: {
-        type: String,
-        required: true,
-        unique: true
+const DataSchema = mongoose.Schema(
+  {
+    FirstName: {
+      type: String,
+      required: true,
+    },
+    LastName: {
+      type: String,
+      required: true,
     },
     Email: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+    },
+    Password: {
+      type: String,
+      required: true,
     }
-},
-{
-    timestamps: true, versionKey: false
-}
-)
+  },
+  {
+    timestamps: true,
+    versionKey: false,
+  }
+);
 
-const UserModel = mongoose.model('users', DataSchema)
+const UserModel = mongoose.model("users", DataSchema);
 
-module.exports = UserModel;
+module.exports = UserModel

@@ -2,30 +2,31 @@
 const express=require('express')
 const app=express()
 const mongoose=require('mongoose')
+require('dotenv').config()
 
-const userRouter=require('./src/routes/user.route')
+const cors = require('cors')
+
 const router = require('./src/routes/api')
 
 // extra packages
-const cors = require('cors')
-require('dotenv').config()
+
+
 
 // using the packages
 app.use(express.json())
 app.use(cors())
 
 // mongoDb connection
-let url = process.env.DATABASE
+let url = process.env.URL;
 
 mongoose.connect(url)
 
 // routing implement
-app.use('/api/v1/user', userRouter)
 app.use('/api/v1', router)
 
 // error routing implement
 app.use("*",(req,res)=>{
-    res.status(404).json({status:"fail",data:"something went wrong"})
+    res.status(404).json({status:"fail",data:"something went wrong", message: "please check your net connection"})
 })
 
 module.exports = app;
