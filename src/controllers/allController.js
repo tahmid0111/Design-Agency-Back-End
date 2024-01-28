@@ -13,6 +13,11 @@ const {
   AllReviewService,
   AllWorkService,
   AllFeatureService,
+  SingleMemberService,
+  SingleServiceService,
+  AllServiceService,
+  SingleProjectService,
+  SingleHeroService,
 } = require("../services/allServices");
 
 exports.AllTeamMembers = async (req, res) => {
@@ -25,78 +30,72 @@ exports.AllTeamMembers = async (req, res) => {
 };
 
 exports.SingleMember = async (req, res) => {
-  const id = new mongoose.Types.ObjectId(req.params.id);
-  const aggregationPipeline = [{ $match: { _id: id } }];
-  try {
-    const result = await teamModel.aggregate(aggregationPipeline).limit(1);
-    res.status(200).json({ status: "success", data: result });
-  } catch (error) {
-    res.status(404).json({ status: "fail", data: "something went wrong" });
+  let result = await SingleMemberService(req);
+  if (result.status === "success") {
+    res.status(200).json({ status: "success", data: result.data });
+  } else {
+    res.status(404).json({ status: "fail" });
   }
 };
 
 exports.AllServices = async (req, res) => {
-  let result = await AllServices();
+  let result = await AllServiceService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }
 };
 
 exports.SingleService = async (req, res) => {
-  let id = req.params.id;
-  let Query = { _id: id };
-  try {
-    const result = await serviceModel.findOne(Query);
-    res.status(200).json({ status: "success", data: result });
-  } catch (error) {
-    res.status(404).json({ status: "fail", data: "something went wrong" });
+  let result = await SingleServiceService(req);
+  if (result.status === "success") {
+    res.status(200).json({ status: "success", data: result.data });
+  } else {
+    res.status(404).json({ status: "fail" });
   }
 };
 
 exports.AllProjects = async (req, res) => {
   let result = await AllProjectService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }
 };
 
 exports.SingleProject = async (req, res) => {
-  let id = req.params.id;
-  let Query = { _id: id };
-  try {
-    const result = await projectModel.findOne(Query);
-    res.status(200).json({ status: "success", data: result });
-  } catch (error) {
-    res.status(404).json({ status: "fail", data: "something went wrong" });
+  let result = await SingleProjectService(req);
+  if (result.status === "success") {
+    res.status(200).json({ status: "success", data: result.data });
+  } else {
+    res.status(404).json({ status: "fail" });
   }
 };
 
 exports.AllReviews = async (req, res) => {
   let result = await AllReviewService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }
 };
 
 exports.HeroController = async (req, res) => {
-  try {
-    const result = await heroModel.findOne();
-    res.status(200).json({ status: "success", data: result });
-  } catch (error) {
-    res.status(404).json({ status: "fail", data: "something went wrong" });
+  let result = await SingleHeroService(req);
+  if (result.status === "success") {
+    res.status(200).json({ status: "success", data: result.data });
+  } else {
+    res.status(404).json({ status: "fail" });
   }
 };
 
 exports.AllWorks = async (req, res) => {
   let result = await AllWorkService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }
@@ -105,7 +104,7 @@ exports.AllWorks = async (req, res) => {
 exports.AllFeatures = async (req, res) => {
   let result = await AllFeatureService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }
