@@ -1,14 +1,7 @@
-const heroModel = require("../models/heroModel");
-const projectModel = require("../models/projectModel");
-const reviewModel = require("../models/reviewModel");
-const serviceModel = require("../models/serviceModel");
-const teamModel = require("../models/teamModel");
-const workModel = require("../models/workModel");
-const mongoose=require('mongoose')
+// all services are imported here
 const {
   RegisterUserService,
   AllTeamMemberService,
-  AllServices,
   AllProjectService,
   AllReviewService,
   AllWorkService,

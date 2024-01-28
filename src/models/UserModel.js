@@ -18,7 +18,7 @@ const DataSchema = mongoose.Schema(
     Password: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     timestamps: true,
@@ -28,4 +28,4 @@ const DataSchema = mongoose.Schema(
 
 const UserModel = mongoose.model("users", DataSchema);
 
-module.exports = UserModel
+module.exports = UserModel;

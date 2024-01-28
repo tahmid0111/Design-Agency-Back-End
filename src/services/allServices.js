@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+// all models are imported here
 const teamModel = require("../models/teamModel");
 const UserModel = require("../models/userModel");
 const serviceModel = require("../models/serviceModel");
@@ -42,18 +42,16 @@ exports.AllServiceService = async () => {
   }
 };
 
-
 exports.SingleServiceService = async (req) => {
-    const id = new mongoose.Types.ObjectId(req.params.id);
-    const aggregationPipeline = [{ $match: { _id: id } }];
-    try {
-      const result = await serviceModel.aggregate(aggregationPipeline).limit(1);
-      return { status: "success", data: result };
-    } catch (error) {
-      return { status: "fail" };
-    }
-  };
-
+  const id = new mongoose.Types.ObjectId(req.params.id);
+  const aggregationPipeline = [{ $match: { _id: id } }];
+  try {
+    const result = await serviceModel.aggregate(aggregationPipeline).limit(1);
+    return { status: "success", data: result };
+  } catch (error) {
+    return { status: "fail" };
+  }
+};
 
 exports.AllProjectService = async () => {
   const aggregationPipeline = [{ $match: {} }];
@@ -67,17 +65,15 @@ exports.AllProjectService = async () => {
 };
 
 exports.SingleProjectService = async (req) => {
-    const id = new mongoose.Types.ObjectId(req.params.id);
-    const aggregationPipeline = [{ $match: { _id: id } }];
-    try {
-      const result = await projectModel.aggregate(aggregationPipeline).limit(1);
-      return { status: "success", data: result };
-    } catch (error) {
-      return { status: "fail" };
-    }
-  };
-
-
+  const id = new mongoose.Types.ObjectId(req.params.id);
+  const aggregationPipeline = [{ $match: { _id: id } }];
+  try {
+    const result = await projectModel.aggregate(aggregationPipeline).limit(1);
+    return { status: "success", data: result };
+  } catch (error) {
+    return { status: "fail" };
+  }
+};
 
 exports.AllReviewService = async () => {
   const aggregationPipeline = [{ $match: {} }];
@@ -91,18 +87,15 @@ exports.AllReviewService = async () => {
 };
 
 exports.SingleHeroService = async (req) => {
-    const id = new mongoose.Types.ObjectId(req.params.id);
-    const aggregationPipeline = [{ $match: { } }];
-    try {
-      const result = await heroModel.aggregate(aggregationPipeline).limit(1);
-      return { status: "success", data: result };
-    } catch (error) {
-      return { status: "fail" };
-    }
-  };
-
-
-
+  const id = new mongoose.Types.ObjectId(req.params.id);
+  const aggregationPipeline = [{ $match: {} }];
+  try {
+    const result = await heroModel.aggregate(aggregationPipeline).limit(1);
+    return { status: "success", data: result };
+  } catch (error) {
+    return { status: "fail" };
+  }
+};
 
 exports.AllWorkService = async () => {
   const aggregationPipeline = [{ $match: {} }];
