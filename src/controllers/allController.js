@@ -11,6 +11,7 @@ const {
   AllServiceService,
   SingleProjectService,
   SingleHeroService,
+  LoginUserService,
 } = require("../services/allServices");
 
 exports.AllTeamMembers = async (req, res) => {
@@ -108,6 +109,20 @@ exports.RegisterUser = async (req, res) => {
   let result = await RegisterUserService(req);
   if (result.status == "success") {
     res.status(200).json({ status: "success", data: result });
+  } else {
+    res.status(404).json({ status: "fail" });
+  }
+};
+
+exports.LoginUser = async (req, res) => {
+  let result = await LoginUserService(req);
+  if (result.status === "success") {
+    res.status(200).json({ status: "success", data: result.data });
+  }
+  if (result.status === "wrong") {
+    res
+      .status(200)
+      .json({ status: "success", message: "invalid email or password" });
   } else {
     res.status(404).json({ status: "fail" });
   }

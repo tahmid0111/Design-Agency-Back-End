@@ -13,6 +13,7 @@ const {
   SingleMember,
   SingleService,
   SingleProject,
+  LoginUser,
 } = require("../controllers/allController");
 
 router.get("/allmembers", AllTeamMembers);
@@ -27,5 +28,6 @@ router.get("/allworks", AllWorks);
 router.get("/allfeatures", AllFeatures);
 // all user related apis are here
 router.post("/register", RegisterUser);
+router.post("/login", LoginUser);
 
 module.exports = router;

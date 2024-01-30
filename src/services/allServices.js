@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 // all models are imported here
 const teamModel = require("../models/teamModel");
 const UserModel = require("../models/userModel");
@@ -119,14 +121,43 @@ exports.AllFeatureService = async () => {
   }
 };
 
-// user related service is here
+// user related services are here
 exports.RegisterUserService = async (req) => {
   try {
     let reqBody = req.body;
-    let result = await UserModel.create(reqBody);
+    let hashedPass = await bcrypt.hash(reqBody.Password, 10);
+    let myBody = {
+      ...reqBody,
+      Password: hashedPass,
+    };
+    let result = await UserModel.create(myBody);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
+    return { status: "fail" };
+  }
+};
+
+exports.LoginUserService = async (req) => {
+  try {
+    let reqBody = req.body;
+    let aggregationPipeline = [{ $match: { Email: reqBody.Email } }];
+    let user = await UserModel.aggregate(aggregationPipeline).limit(1);
+    if (user) {
+      let result = await bcrypt.compare(reqBody.Password, user[0].Password);
+      if (result) {
+        let Payload = {
+          exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
+          data: user,
+        };
+
+        let token = jwt.sign(Payload, "secretkey");
+
+        return { status: "success", data: token };
+      } else {
+        return { status: "wrong" };
+      }
+    }
+  } catch (error) {
     return { status: "fail" };
   }
 };
