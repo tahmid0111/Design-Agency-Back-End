@@ -16,7 +16,7 @@ const {
 exports.AllTeamMembers = async (req, res) => {
   let result = await AllTeamMemberService();
   if (result.status === "success") {
-    res.status(200).json({ status: "success", data: result });
+    res.status(200).json({ status: "success", data: result.data });
   } else {
     res.status(404).json({ status: "fail" });
   }

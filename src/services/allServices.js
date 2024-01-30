@@ -124,7 +124,7 @@ exports.RegisterUserService = async (req) => {
   try {
     let reqBody = req.body;
     let result = await UserModel.create(reqBody);
-    return { status: "success", data: result.data };
+    return { status: "success", data: result };
   } catch (error) {
     console.log(error);
     return { status: "fail" };

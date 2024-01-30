@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const DataSchema = mongoose.Schema(
   {
-    FirstName: {
+    UserName: {
       type: String,
       required: true,
     },
