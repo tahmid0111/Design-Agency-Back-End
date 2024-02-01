@@ -27,7 +27,8 @@ exports.SingleMemberService = async (req) => {
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
     const result = await teamModel.aggregate(aggregationPipeline).limit(1);
-    return { status: "success", data: result };
+    const Singleobject = result[0];
+    return { status: "success", data: Singleobject };
   } catch (error) {
     return { status: "fail" };
   }
@@ -49,7 +50,8 @@ exports.SingleServiceService = async (req) => {
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
     const result = await serviceModel.aggregate(aggregationPipeline).limit(1);
-    return { status: "success", data: result };
+    const Singleobject = result[0]
+    return { status: "success", data: Singleobject };
   } catch (error) {
     return { status: "fail" };
   }
@@ -71,7 +73,8 @@ exports.SingleProjectService = async (req) => {
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
     const result = await projectModel.aggregate(aggregationPipeline).limit(1);
-    return { status: "success", data: result };
+    const Singleobject = result[0];
+    return { status: "success", data: Singleobject };
   } catch (error) {
     return { status: "fail" };
   }

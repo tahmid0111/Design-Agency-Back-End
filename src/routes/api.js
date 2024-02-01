@@ -15,19 +15,21 @@ const {
   SingleProject,
   LoginUser,
 } = require("../controllers/allController");
+const { AuthVerify } = require("../middleware/AuthVerifyMiddleware");
 
+// all user related apis are here
+router.post("/register", RegisterUser);
+router.post("/login", LoginUser);
+// all other apis are here
 router.get("/allmembers", AllTeamMembers);
-router.get("/singlemember/:id", SingleMember);
+router.get("/singlemember/:id", AuthVerify, SingleMember);
 router.get("/allservices", AllServices);
-router.get("/singleservice/:id", SingleService);
+router.get("/singleservice/:id", AuthVerify, SingleService);
 router.get("/allprojects", AllProjects);
-router.get("/singleproject/:id", SingleProject);
+router.get("/singleproject/:id", AuthVerify, SingleProject);
 router.get("/allreviews", AllReviews);
 router.get("/hero", HeroController);
 router.get("/allworks", AllWorks);
 router.get("/allfeatures", AllFeatures);
-// all user related apis are here
-router.post("/register", RegisterUser);
-router.post("/login", LoginUser);
 
 module.exports = router;
