@@ -1,3 +1,4 @@
+// initial packages are imported here
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -17,7 +18,6 @@ exports.AllTeamMemberService = async () => {
     let result = await teamModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
@@ -26,7 +26,7 @@ exports.SingleMemberService = async (req) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
-    const result = await teamModel.aggregate(aggregationPipeline).limit(1);
+    const result = await teamModel.aggregate(aggregationPipeline);
     const Singleobject = result[0];
     return { status: "success", data: Singleobject };
   } catch (error) {
@@ -40,7 +40,6 @@ exports.AllServiceService = async () => {
     let result = await serviceModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
@@ -49,8 +48,8 @@ exports.SingleServiceService = async (req) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
-    const result = await serviceModel.aggregate(aggregationPipeline).limit(1);
-    const Singleobject = result[0]
+    const result = await serviceModel.aggregate(aggregationPipeline);
+    const Singleobject = result[0];
     return { status: "success", data: Singleobject };
   } catch (error) {
     return { status: "fail" };
@@ -63,7 +62,6 @@ exports.AllProjectService = async () => {
     let result = await projectModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
@@ -72,7 +70,7 @@ exports.SingleProjectService = async (req) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
   const aggregationPipeline = [{ $match: { _id: id } }];
   try {
-    const result = await projectModel.aggregate(aggregationPipeline).limit(1);
+    const result = await projectModel.aggregate(aggregationPipeline);
     const Singleobject = result[0];
     return { status: "success", data: Singleobject };
   } catch (error) {
@@ -86,17 +84,16 @@ exports.AllReviewService = async () => {
     let result = await reviewModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
 
-exports.SingleHeroService = async (req) => {
-  const id = new mongoose.Types.ObjectId(req.params.id);
+exports.SingleHeroService = async () => {
   const aggregationPipeline = [{ $match: {} }];
   try {
-    const result = await heroModel.aggregate(aggregationPipeline).limit(1);
-    return { status: "success", data: result };
+    const result = await heroModel.aggregate(aggregationPipeline);
+    const Singleobject = result[0];
+    return { status: "success", data: Singleobject };
   } catch (error) {
     return { status: "fail" };
   }
@@ -108,7 +105,6 @@ exports.AllWorkService = async () => {
     let result = await workModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
@@ -119,7 +115,6 @@ exports.AllFeatureService = async () => {
     let result = await featuredModel.aggregate(aggregationPipeline);
     return { status: "success", data: result };
   } catch (error) {
-    console.log(error);
     return { status: "fail" };
   }
 };
@@ -128,6 +123,7 @@ exports.AllFeatureService = async () => {
 exports.RegisterUserService = async (req) => {
   try {
     let reqBody = req.body;
+    // using bcrypt for saving the password in encoded format for improving user's privacy
     let hashedPass = await bcrypt.hash(reqBody.Password, 10);
     let myBody = {
       ...reqBody,
@@ -141,20 +137,21 @@ exports.RegisterUserService = async (req) => {
 };
 
 exports.LoginUserService = async (req) => {
+  let reqBody = req.body;
+  let aggregationPipeline = [{ $match: { Email: reqBody.Email } }];
+
   try {
-    let reqBody = req.body;
-    let aggregationPipeline = [{ $match: { Email: reqBody.Email } }];
-    let user = await UserModel.aggregate(aggregationPipeline).limit(1);
+    let user = await UserModel.aggregate(aggregationPipeline);
     if (user) {
+      // Encoded passwords can never be decoded, so we should check them in this way
       let result = await bcrypt.compare(reqBody.Password, user[0].Password);
       if (result) {
         let Payload = {
           exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60,
           data: user,
         };
-
         let token = jwt.sign(Payload, "secretkey");
-
+        
         return { status: "success", data: token };
       } else {
         return { status: "wrong" };

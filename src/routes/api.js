@@ -15,6 +15,7 @@ const {
   SingleProject,
   LoginUser,
 } = require("../controllers/allController");
+// middleware is imported here
 const { AuthVerify } = require("../middleware/AuthVerifyMiddleware");
 
 // all user related apis are here
@@ -28,6 +29,7 @@ router.get("/singleservice/:id", AuthVerify, SingleService);
 router.get("/allprojects", AllProjects);
 router.get("/singleproject/:id", AuthVerify, SingleProject);
 router.get("/allreviews", AllReviews);
+// apis for HomePage are here
 router.get("/hero", HeroController);
 router.get("/allworks", AllWorks);
 router.get("/allfeatures", AllFeatures);
